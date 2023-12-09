@@ -90,14 +90,13 @@ function generate_data(N,T,X,S,F1,F2,F_cumul,β,θ;T_init=10,π=0.4,ex_initial=0
         NData=repeat((1:N)',1,T)) 
 end
 
-(true_ccps,_) =value_function_iteration(X,S,F1,F2,β,θ);
-
 # Set the number of buses, time periods and value of parameters
 N=2000;
 T=15;
 θ=[2.0, -0.15, 1.0];
-β=0.9;
 π=0.4;
+
+(true_ccps,_) =value_function_iteration(X,S,F1,F2,β,θ);
 
 Random.seed!(3000);
 XData, SData, DData, XIndexData, TData, NData = generate_data(N,T,X,S,F1,F2,F2_cumul,β,θ);
